@@ -48,9 +48,11 @@ router.post('/login', async (req, res) => {
 
     // Create and assign a token
     const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).json({
-        'auth-token': token
-    });
+    
+    // TODO: FIX COOKIE PATH
+    res.cookie('user-id', decodeURIComponent(user._id));
+    res.cookie('Bearer', token);
+    res.status(200).send("Successfully logged in.");
 });
 
 

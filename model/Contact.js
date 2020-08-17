@@ -1,12 +1,16 @@
 const mongoose = require('mongoose');
 
 const contactSchema = new mongoose.Schema({
+    guid: {
+        type: String,
+        required: true
+    },
     callsign: {
         type: String,
         required: true,
         min: 6
     },
-    toCallsign: {
+    contact_callsign: {
         type: String,
         required: true,
         max: 7,
